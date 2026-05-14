@@ -63,7 +63,7 @@ pipeline {
 
         stage('Docker Push') {
             steps {
-                withDockerRegistry(credentialsId: 'docker') {
+		withDockerRegistry([ credentialsId: 'docker', url: 'https://index.docker.io/v1/' ]) {
                     sh 'docker push nasir590/2048-game:latest'
                 }
             }
